@@ -2,19 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Andrew</title>
+  <title>Image Toggle</title>
   <style>
     body {
       margin: 0;
       background: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
     img {
-      display: block;
-      margin: 0 auto;
+      max-width: 100%;
+      max-height: 100%;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <img src="Andrew.png" alt="Andrew">
+  <img id="toggleImage" src="Andrew.png" alt="Andrew">
+  <script>
+    const img = document.getElementById('toggleImage');
+
+    img.addEventListener('click', () => {
+      if (!document.fullscreenElement) {
+        img.requestFullscreen().catch(err => {
+          console.error(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+        });
+      } else {
+        document.exitFullscreen();
+      }
+    });
+  </script>
 </body>
 </html>
