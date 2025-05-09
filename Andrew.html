@@ -7,45 +7,33 @@
     body {
       margin: 0;
       background: black;
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
-
     img {
       display: block;
       margin: auto;
       cursor: pointer;
       transition: all 0.3s ease;
     }
-
     .scaled {
       max-width: 100vw;
       max-height: 100vh;
+      width: auto;
+      height: auto;
     }
   </style>
 </head>
 <body>
   <img id="toggleImage" src="Andrew.png" alt="Andrew">
   <script>
-    const img = document.getElementById('toggleImage');
-    let isScaled = false;
+    window.addEventListener('DOMContentLoaded', () => {
+      const img = document.getElementById('toggleImage');
+      let isScaled = false;
 
-    const updateScale = () => {
-      if (isScaled) {
-        img.classList.add('scaled');
-      } else {
-        img.classList.remove('scaled');
-      }
-    };
-
-    img.addEventListener('click', () => {
-      isScaled = !isScaled;
-      updateScale();
+      img.addEventListener('click', () => {
+        isScaled = !isScaled;
+        img.classList.toggle('scaled', isScaled);
+      });
     });
-
-    // Optional: Start in full resolution by default (not scaled)
-    updateScale();
   </script>
 </body>
 </html>
